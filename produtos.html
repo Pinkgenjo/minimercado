@@ -1,114 +1,179 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Produtos - Minimercado</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos - Mercadinho</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
 </head>
-
 <body>
-    <header>
-        <h1>🛒 Minimercado</h1>
-        <nav>
-            <p>
-                <a href="index.html">🏠 Início</a> |
-                <a href="produtos.html">🧃 Produtos</a> |
-                <a href="servicos.html">🛠️ Serviços</a>
-            </p>
-        </nav>
-        <hr>
-    </header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="fas fa-store me-2"></i> Mercadinho
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="produtos.html">Produtos</a> </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="servicos.html">Serviços</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-    <main>
-        <h2>🧃 Nossos Produtos</h2>
+    <section class="bg-primary text-white py-5">
+        <div class="container">
+            <h1 class="display-4 text-center">Nossos Produtos</h1>
+        </div>
+    </section>
 
-        <section>
-            <h3>🧼 Higiene</h3>
-            <article>
-                <figure>
-                    <img src="imagens/sabonete.webp" alt="Sabonete" width="150">
-                    <figcaption>
-                        <h4>🧴 Sabonete</h4>
-                        <p>Sabonete hidratante 85g</p>
-                        <p><strong>R$ 3,50</strong></p>
-                    </figcaption>
-                </figure>
-            </article>
-            <article>
-                <figure>
-                    <img src="imagens/shampoo.jpg" alt="Shampoo" width="150">
-                    <figcaption>
-                        <h4>🧴 Shampoo</h4>
-                        <p>Shampoo 300ml</p>
-                        <p><strong>R$ 12,00</strong></p>
-                    </figcaption>
-                </figure>
-            </article>
-        </section>
+    <section class="py-5">
+        <div class="container">
+            <div class="category-section mb-5">
+                <h2 class="text-center mb-4">
+                    <i class="fas fa-utensils text-primary me-2"></i>Alimentos
+                </h2>
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100 shadow-sm">
+                            <img src="./imagens/arroz.webp" class="card-img-top" alt="Pacote de arroz branco de 5kg.">
+                            <div class="card-body">
+                                <h5 class="card-title">Arroz Branco 5kg</h5>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="h4 text-primary mb-0">R$12,00</span>
+                                    <button class="btn btn-outline-primary">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100 shadow-sm">
+                            <img src="./imagens/feijao.jpeg" class="card-img-top" alt="Pacote de feijão carioca de 1kg.">
+                            <div class="card-body">
+                                <h5 class="card-title">Feijão Carioca 1kg</h5>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="h4 text-primary mb-0">R$8,00</span>
+                                    <button class="btn btn-outline-primary">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        <hr>
+            <div class="category-section mb-5">
+                <h2 class="text-center mb-4">
+                    <i class="fas fa-soap text-primary me-2"></i>Higiene
+                </h2>
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100 shadow-sm">
+                            <img src="./imagens/sabonete.webp" class="card-img-top" alt="Barra de sabonete hidratante.">
+                            <div class="card-body">
+                                <h5 class="card-title">Sabonete</h5>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="h4 text-primary mb-0">R$3,99</span>
+                                    <button class="btn btn-outline-primary">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100 shadow-sm">
+                            <img src="./imagens/shampoo.jpg" class="card-img-top" alt="Frasco de shampoo para cabelos.">
+                            <div class="card-body">
+                                <h5 class="card-title">Shampoo</h5>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="h4 text-primary mb-0">R$15,00</span>
+                                    <button class="btn btn-outline-primary">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        <section>
-            <h3>🍚 Alimentos</h3>
-            <article>
-                <figure>
-                    <img src="imagens/arroz.webp" alt="Arroz" width="150">
-                    <figcaption>
-                        <h4>🍚 Arroz</h4>
-                        <p>Pacote de arroz 5kg</p>
-                        <p><strong>R$ 25,00</strong></p>
-                    </figcaption>
-                </figure>
-            </article>
-            <article>
-                <figure>
-                    <img src="imagens/feijao.jpeg" alt="Feijão" width="150">
-                    <figcaption>
-                        <h4>🌱 Feijão</h4>
-                        <p>Pacote de feijão 1kg</p>
-                        <p><strong>R$ 8,00</strong></p>
-                    </figcaption>
-                </figure>
-            </article>
-        </section>
+            <div class="category-section mb-5">
+                <h2 class="text-center mb-4">
+                    <i class="fas fa-glass-water text-primary me-2"></i>Bebidas
+                </h2>
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100 shadow-sm">
+                            <img src="./imagens/refrigerante.webp" class="card-img-top" alt="Garrafa de refrigerante de cola de 2 litros.">
+                            <div class="card-body">
+                                <h5 class="card-title">Refrigerante</h5>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="h4 text-primary mb-0">R$12,00</span>
+                                    <button class="btn btn-outline-primary">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100 shadow-sm">
+                            <img src="./imagens/suco.webp" class="card-img-top" alt="Caixa de suco de laranja integral.">
+                            <div class="card-body">
+                                <h5 class="card-title">Suco de Laranja</h5>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="h4 text-primary mb-0">R$10,00</span>
+                                    <button class="btn btn-outline-primary">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <hr>
-
-        <section>
-            <h3>🥤 Bebidas</h3>
-            <article>
-                <figure>
-                    <img src="imagens/suco.webp" alt="Suco de laranja" width="150">
-                    <figcaption>
-                        <h4>🍊 Suco de Laranja</h4>
-                        <p>Suco natural 1L</p>
-                        <p><strong>R$ 6,50</strong></p>
-                    </figcaption>
-                </figure>
-            </article>
-            <article>
-                <figure>
-                    <img src="imagens/refrigerante.webp" alt="Refrigerante" width="150">
-                    <figcaption>
-                        <h4>🥤 Refrigerante</h4>
-                        <p>Garrafa 2L</p>
-                        <p><strong>R$ 7,00</strong></p>
-                    </figcaption>
-                </figure>
-            </article>
-        </section>
-    </main>
-
-    <footer>
-        <hr>
-        <p>&copy; 2025 Minimercado - Todos os direitos reservados.</p>
-        <p>Contato: contato@minimercado.com</p>
-        <p>
-            <a href="index.html">Início</a> |
-            <a href="produtos.html">Produtos</a> |
-            <a href="servicos.html">Serviços</a>
-        </p>
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5><i class="fas fa-store me-2"></i>Mercadinho</h5>
+                    <p>Seu mercado de confiança no bairro desde 1995. Qualidade, preço justo e atendimento que faz a diferença.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contato</h5>
+                    <p><i class="fas fa-map-marker-alt me-2"></i>Rua Exemplo, 123</p>
+                    <p><i class="fas fa-phone me-2"></i>(54) 12345-6789</p>
+                    <p><i class="fas fa-envelope me-2"></i>contato@minimercado.com</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Horário de Funcionamento</h5>
+                    <p>24 horas por dia, todos os dias da semana</p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2025 Mercadinho - Todos os direitos reservados.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-white me-3">Política de Privacidade</a>
+                    <a href="#" class="text-white me-3">Termos de Uso</a>
+                    <a href="#" class="text-white">Aviso Legal</a>
+                </div>
+                    <p class="text-center">
+                        <a href="index.html" class="text-white me-2">Início</a> |
+                        <a href="produtos.html" class="text-white mx-2">Produtos</a> | <a href="servicos.html" class="text-white ms-2">Serviços</a> </p>
+            </div>
+        </div>
     </footer>
-</body>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
 </html>

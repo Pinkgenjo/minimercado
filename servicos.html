@@ -1,58 +1,281 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Serviços - Minimercado</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços - Mercadinho</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
 </head>
-
 <body>
-    <header>
-        <h1>🛒 Minimercado</h1>
-        <nav>
-            <p>
-                <a href="index.html">🏠 Início</a> |
-                <a href="produtos.html">🧃 Produtos</a> |
-                <a href="servicos.html">🛠️ Serviços</a>
-            </p>
-        </nav>
-        <hr>
-    </header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="fas fa-store me-2"></i> Mercadinho
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="produtos.html">Produtos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="servicos.html">Serviços</a> </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-    <main>
-        <h2>🛠️ Nossos Serviços</h2>
+    <section class="bg-primary text-white py-5">
+        <div class="container">
+            <h1 class="display-4 text-center">Nossos Serviços</h1>
+            <p class="lead text-center">Cadastre-se conosco e agende sua entrega ou retirada</p>
+        </div>
+    </section>
 
-        <section>
-            <article>
-                <h3>🚚 Entrega a domicílio</h3>
-                <p>Receba suas compras no conforto da sua casa com agilidade.</p>
-                <p><strong>Valor:</strong> R$ 5,00 por entrega</p>
-            </article>
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mb-5">
+                    <div class="card shadow">
+                        <div class="card-header bg-primary text-white">
+                            <h3 class="mb-0"><i class="fas fa-user-plus me-2"></i>Cadastro de Cliente</h3>
+                        </div>
+                        <div class="card-body">
+                            <form id="registrationForm" novalidate>
+                                <div class="mb-3">
+                                    <label for="firstName" class="form-label">Nome *</label>
+                                    <input type="text" class="form-control" id="firstName" required>
+                                    <div class="invalid-feedback">
+                                        Por favor, forneça um nome válido.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="lastName" class="form-label">Sobrenome *</label>
+                                    <input type="text" class="form-control" id="lastName" required>
+                                    <div class="invalid-feedback">
+                                        Por favor, forneça um sobrenome válido.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email  *</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                    <div class="invalid-feedback">
+                                        Por favor, forneça um email válido.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="phone" class="form-label">Telefone *</label>
+                                    <input type="tel" class="form-control" id="phone" pattern="\(\d{2}\)\s?\d{4,5}-?\d{4}" required>
+                                    <div class="invalid-feedback">
+                                        Por favor, forneça um número de telefone válido no formato (XX) XXXXX-XXXX.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="address" class="form-label">Endereço *</label>
+                                    <textarea class="form-control" id="address" rows="3" required></textarea>
+                                    <div class="invalid-feedback">
+                                        Por favor, forneça um endereço válido.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="city" class="form-label">Cidade *</label>
+                                    <input type="text" class="form-control" id="city" required>
+                                    <div class="invalid-feedback">
+                                        Por favor, forneça uma cidade válida.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="state" class="form-label">Estado *</label>
+                                    <input type="text" class="form-control" id="state" required>
+                                    <div class="invalid-feedback">
+                                        Por favor, forneça um estado válido.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="zip" class="form-label">CEP *</label>
+                                    <input type="text" class="form-control" id="zip" required pattern="\d{5}-?\d{3}">
+                                    <div class="invalid-feedback">
+                                        Por favor, forneça um CEP válido no formato XXXXX-XXX ou XXXXXXXX.
+                                    </div>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="terms" required>
+                                    <label class="form-check-label" for="terms">
+                                        Aceito os <a href="#" class="text-primary">Termos de uso</a> *
+                                    </label>
+                                    <div class="invalid-feedback">
+                                        Você deve aceitar os termos de uso para se registrar.
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Cadastrar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
 
-            <article>
-                <h3>🎁 Cartão Fidelidade</h3>
-                <p>Acumule pontos e ganhe descontos exclusivos a cada compra.</p>
-                <p><strong>Valor:</strong> Gratuito</p>
-            </article>
+                <div class="col-lg-6 mb-5">
+                    <div class="card shadow">
+                        <div class="card-header bg-success text-white">
+                            <h3 class="mb-0"><i class="fas fa-calendar-alt me-2"></i>Agendar Serviço</h3>
+                        </div>
+                        <div class="card-body">
+                            <form id="schedulingForm" novalidate>
+                                <div class="mb-3">
+                                    <label for="customerEmail" class="form-label">Email do Cliente *</label>
+                                    <input type="email" class="form-control" id="customerEmail" required>
+                                    <div class="invalid-feedback">
+                                        Por favor, forneça um email válido.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Tipo de Serviço *</label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="serviceType" id="delivery" value="delivery" required>
+                                        <label class="form-check-label" for="delivery">
+                                            <i class="fas fa-truck me-2"></i>Entrega (R$10,00)
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="serviceType" id="pickup" value="pickup" required>
+                                        <label class="form-check-label" for="pickup">
+                                            <i class="fas fa-store me-2"></i>Retirada (Grátis)
+                                        </label>
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Por favor, selecione um tipo de serviço.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="serviceDate" class="form-label">Data *</label>
+                                    <input type="date" class="form-control" id="serviceDate" required>
+                                    <div class="invalid-feedback">
+                                        Por favor, selecione uma data válida.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="serviceTime" class="form-label">Horário *</label>
+                                    <select class="form-select" id="serviceTime" required>
+                                        <option value="">Escolha o Horário...</option>
+                                        <option value="09:00">9:00 - 11:00</option>
+                                        <option value="11:00">11:00 - 13:00</option>
+                                        <option value="13:00">13:00 - 15:00</option>
+                                        <option value="15:00">15:00 - 17:00</option>
+                                        <option value="17:00">17:00 - 19:00</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Por favor, selecione um horário válido.
+                                    </div>
+                                </div>
+                                <div class="mb-3" id="deliveryAddress" style="display: none;">
+                                    <label for="deliveryAddressText" class="form-label">Endereço de Entrega</label>
+                                    <textarea class="form-control" id="deliveryAddressText" rows="3" placeholder="Insira o endereço de entrega se for diferente do endereço de registro"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="specialInstructions" class="form-label">Observações</label>
+                                    <textarea class="form-control" id="specialInstructions" rows="3" placeholder="Alguma observação?"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="orderItems" class="form-label">Pedido *</label>
+                                    <textarea class="form-control" id="orderItems" rows="4" placeholder="Lista de produtos que você deseja..." required></textarea>
+                                    <div class="invalid-feedback">
+                                        Por favor, forneça uma lista de produtos.
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-success w-100">Fazer Pedido</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-            <article>
-                <h3>📱 Recarga de celular</h3>
-                <p>Faça recargas para qualquer operadora direto no caixa.</p>
-                <p><strong>Valor:</strong> a partir de R$ 10,00</p>
-            </article>
-        </section>
-    </main>
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="card bg-light">
+                        <div class="card-body">
+                            <h4 class="card-title text-center mb-4">Informações dos Serviços</h4>
+                            <div class="row">
+                                <div class="col-md-6 text-center mb-3">
+                                    <i class="fas fa-truck fa-3x text-primary mb-3"></i>
+                                    <h5>Entrega</h5>
+                                    <p>Nós entregamos seu pedido em 2 à 4 horas. </p>
+                                    <p>Taxa de Entrega: R$10.00.</p>
+                                    <p>Entrega grátis em compras acima de R$100,00.</p>
+                                </div>
+                                <div class="col-md-6 text-center mb-3">
+                                    <i class="fas fa-store fa-3x text-success mb-3"></i>
+                                    <h5>Retirada</h5>
+                                    <p>Peça online e retire na loja.</p>
+                                    <p>Sem custo adicional.</p>
+                                    <p>Seu pedido fica pronto em 30 min.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <footer>
-        <hr>
-        <p>&copy; 2025 Minimercado - Todos os direitos reservados.</p>
-        <p>Contato: contato@minimercado.com</p>
-        <p>
-            <a href="index.html">Início</a> |
-            <a href="produtos.html">Produtos</a> |
-            <a href="servicos.html">Serviços</a>
-        </p>
+    <div class="modal fade" id="successModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title"><i class="fas fa-check-circle me-2"></i>Sucesso!</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="successMessage"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5><i class="fas fa-store me-2"></i>Mercadinho</h5>
+                    <p>Seu mercado de confiança no bairro desde 1995. Qualidade, preço justo e atendimento que faz a diferença.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contato</h5>
+                    <p><i class="fas fa-map-marker-alt me-2"></i>Rua Exemplo, 123</p>
+                    <p><i class="fas fa-phone me-2"></i>(54) 12345-6789</p>
+                    <p><i class="fas fa-envelope me-2"></i>contato@minimercado.com</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Horário de Funcionamento</h5>
+                    <p>24 horas por dia, todos os dias da semana</p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2025 Mercadinho - Todos os direitos reservados.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-white me-3">Política de Privacidade</a>
+                    <a href="#" class="text-white me-3">Termos de Uso</a>
+                    <a href="#" class="text-white">Aviso Legal</a>
+                </div>
+                    <p class="text-center">
+                        <a href="index.html" class="text-white me-2">Início</a> |
+                        <a href="produtos.html" class="text-white mx-2">Produtos</a> | <a href="servicos.html" class="text-white ms-2">Serviços</a> </p>
+            </div>
+        </div>
     </footer>
-</body>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
 </html>
