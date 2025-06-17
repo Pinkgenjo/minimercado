@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeForms();
     initializeServiceTypeToggle();
     initializeDateValidation();
-    initializeScrollAnimations(); // Pode querer adicionar a classe 'fade-in-up' em mais elementos para animação
+    initializeScrollAnimations(); 
 });
 
 function initializeCarousel() {
@@ -27,7 +27,6 @@ function initializeCarousel() {
 function initializeForms() {
     const registrationForm = document.getElementById('registrationForm');
     if (registrationForm) {
-        // Usa a validação padrão do Bootstrap. Não precisa de um loop extra de inputs aqui.
         registrationForm.addEventListener('submit', handleRegistrationSubmit);
     }
 
@@ -38,14 +37,12 @@ function initializeForms() {
 }
 
 function handleRegistrationSubmit(event) {
-    event.preventDefault(); // Impede o envio padrão do formulário
+    event.preventDefault(); 
 
     const form = event.target;
 
-    // Adiciona a classe 'was-validated' para que o Bootstrap mostre os feedbacks
     form.classList.add('was-validated');
-
-    // Usa a função checkValidity() nativa do formulário e do Bootstrap
+    
     if (form.checkValidity()) {
         const submitButton = form.querySelector('button[type="submit"]');
         const originalText = submitButton.textContent;
@@ -61,34 +58,32 @@ function handleRegistrationSubmit(event) {
                 phone: form.phone.value,
                 address: form.address.value,
                 city: form.city.value,
-                state: form.state.value, // Agora o campo 'state' existe no HTML
-                zip: form.zip.value // Agora o campo 'zip' existe no HTML
+                state: form.state.value, 
+                zip: form.zip.value 
             };
 
             localStorage.setItem('customerData', JSON.stringify(customerData));
 
             showSuccessModal('Cadastro realizado com sucesso! Você já pode agendar seus serviços conosco.');
-            form.reset(); // Limpa o formulário
-            form.classList.remove('was-validated'); // Remove a classe para resetar a validação visual
+            form.reset(); 
+            form.classList.remove('was-validated'); 
             
             submitButton.disabled = false;
             submitButton.textContent = originalText;
         }, 2000);
     } else {
-        // Se a validação do Bootstrap falhar, evita o disparo do evento de submit
+        
         event.stopPropagation();
     }
 }
 
 function handleSchedulingSubmit(event) {
-    event.preventDefault(); // Impede o envio padrão do formulário
+    event.preventDefault(); 
 
     const form = event.target;
 
-    // Adiciona a classe 'was-validated' para que o Bootstrap mostre os feedbacks
     form.classList.add('was-validated');
 
-    // Usa a função checkValidity() nativa do formulário e do Bootstrap
     if (form.checkValidity()) {
         const submitButton = form.querySelector('button[type="submit"]');
         const originalText = submitButton.textContent;
@@ -102,7 +97,6 @@ function handleSchedulingSubmit(event) {
                 serviceType: form.serviceType.value,
                 serviceDate: form.serviceDate.value,
                 serviceTime: form.serviceTime.value,
-                // O deliveryAddressText só existirá se o rádio de entrega for selecionado
                 deliveryAddress: form.querySelector('#deliveryAddressText')?.value || '', 
                 specialInstructions: form.specialInstructions.value,
                 orderItems: form.orderItems.value,
@@ -117,8 +111,8 @@ function handleSchedulingSubmit(event) {
             const message = `Seu agendamento de ${serviceTypeText} foi marcado para ${formatDate(serviceData.serviceDate)} às ${formatTime(serviceData.serviceTime)}. Entraremos em contato em breve para confirmar seu pedido.`;
             
             showSuccessModal(message);
-            form.reset(); // Limpa o formulário
-            form.classList.remove('was-validated'); // Remove a classe para resetar a validação visual
+            form.reset(); 
+            form.classList.remove('was-validated'); 
             
             const deliveryAddressDiv = document.getElementById('deliveryAddress');
             if (deliveryAddressDiv) {
@@ -129,7 +123,6 @@ function handleSchedulingSubmit(event) {
             submitButton.textContent = originalText;
         }, 2000);
     } else {
-        // Se a validação do Bootstrap falhar, evita o disparo do evento de submit
         event.stopPropagation();
     }
 }
@@ -144,22 +137,20 @@ function initializeServiceTypeToggle() {
         deliveryRadio.addEventListener('change', function() {
             if (this.checked) {
                 deliveryAddressDiv.style.display = 'block';
-                deliveryAddressTextarea.setAttribute('required', 'required'); // Garante que é requerido quando visível
+                deliveryAddressTextarea.setAttribute('required', 'required');
             }
         });
 
         pickupRadio.addEventListener('change', function() {
             if (this.checked) {
                 deliveryAddressDiv.style.display = 'none';
-                deliveryAddressTextarea.removeAttribute('required'); // Remove o requerido quando invisível
-                deliveryAddressTextarea.value = ''; // Limpa o valor
-                // Força a validação para remover o erro se o campo estava inválido
+                deliveryAddressTextarea.removeAttribute('required'); 
+                deliveryAddressTextarea.value = ''; 
                 deliveryAddressTextarea.setCustomValidity('');
                 deliveryAddressTextarea.classList.remove('is-invalid', 'is-valid');
             }
         });
 
-        // Configura o estado inicial ao carregar a página
         if (deliveryRadio.checked) {
             deliveryAddressDiv.style.display = 'block';
             deliveryAddressTextarea.setAttribute('required', 'required');
@@ -174,36 +165,29 @@ function initializeDateValidation() {
     const serviceDateInput = document.getElementById('serviceDate');
     if (serviceDateInput) {
         const today = new Date();
-        today.setHours(0, 0, 0, 0); // Zera as horas para comparar apenas a data
+        today.setHours(0, 0, 0, 0); 
         serviceDateInput.setAttribute('min', today.toISOString().split('T')[0]);
 
         const maxDate = new Date();
-        maxDate.setDate(maxDate.getDate() + 30); // Permite agendamento até 30 dias no futuro
+        maxDate.setDate(maxDate.getDate() + 30); 
         serviceDateInput.setAttribute('max', maxDate.toISOString().split('T')[0]);
 
         serviceDateInput.addEventListener('change', function() {
             const selectedDate = new Date(this.value);
-            selectedDate.setHours(0, 0, 0, 0); // Zera as horas para comparação
+            selectedDate.setHours(0, 0, 0, 0); 
 
-            // Limpa mensagens de erro customizadas antes de revalidar
             this.setCustomValidity(''); 
 
             if (selectedDate < today) {
                 this.setCustomValidity('Por favor, selecione uma data futura.');
-            } else if (selectedDate.getDay() === 0) { // 0 é Domingo
+            } else if (selectedDate.getDay() === 0) { 
                 this.setCustomValidity('Não abrimos aos domingos. Por favor, selecione outra data.');
             }
-            // Chama reportValidity() para exibir a mensagem de feedback nativa do navegador/Bootstrap
             this.reportValidity(); 
         });
     }
 }
 
-// REMOVIDA: A função validateForm e validateField foram removidas pois o Bootstrap
-// já faz a maior parte da validação para formulários com 'novalidate' e 'required'
-// A chamada form.checkValidity() no handler de submit é suficiente.
-// Se quiser validações personalizadas adicionais, elas devem ser integradas
-// como Custom Validity messages (setCustomValidity) antes de checkValidity().
 
 function showSuccessModal(message) {
     const modal = document.getElementById('successModal');
@@ -217,8 +201,8 @@ function showSuccessModal(message) {
 }
 
 function formatDate(dateString) {
-    const date = new Date(dateString + 'T00:00:00'); // Adiciona T00:00:00 para evitar problemas de fuso horário
-    return date.toLocaleDateString('pt-BR', { // Mudado para pt-BR
+    const date = new Date(dateString + 'T00:00:00'); 
+    return date.toLocaleDateString('pt-BR', {
         weekday: 'long',
         year: 'numeric',
         month: 'long',
@@ -234,8 +218,7 @@ function formatTime(timeString) {
         '15:00': '15:00 - 17:00',
         '17:00': '17:00 - 19:00'
     };
-    return timeSlots[timeString] || timeString; // Retorna o slot formatado ou o próprio timeString se não encontrar
-}
+    return timeSlots[timeString] || timeString; 
 
 function initializeScrollAnimations() {
     const observerOptions = {
@@ -256,12 +239,12 @@ function initializeScrollAnimations() {
 }
 
 document.addEventListener('click', function(event) {
-    if (event.target.textContent === 'Add to Cart') { // Melhorar: usar um data-attribute para identificar o botão
+    if (event.target.textContent === 'Add to Cart') {
         event.preventDefault();
         const button = event.target;
         const originalText = button.textContent;
         
-        button.textContent = 'Adicionado!'; // Traduzido
+        button.textContent = 'Adicionado!'; 
         button.classList.remove('btn-outline-primary');
         button.classList.add('btn-success');
         
@@ -274,24 +257,24 @@ document.addEventListener('click', function(event) {
 });
 
 document.addEventListener('input', function(event) {
-    if (event.target.type === 'tel' && event.target.id === 'phone') { // Garante que só afeta o campo de telefone do formulário
-        let value = event.target.value.replace(/\D/g, ''); // Remove tudo que não é dígito
+    if (event.target.type === 'tel' && event.target.id === 'phone') { 
+        let value = event.target.value.replace(/\D/g, ''); 
         let formattedValue = '';
 
         if (value.length > 0) {
-            formattedValue = `(${value.substring(0, 2)}`; // DDD
+            formattedValue = `(${value.substring(0, 2)}`; 
             if (value.length > 2) {
-                formattedValue += `) ${value.substring(2, 7)}`; // Primeiros 5 ou 4 dígitos
+                formattedValue += `) ${value.substring(2, 7)}`; 
                 if (value.length > 7) {
-                    formattedValue += `-${value.substring(7, 11)}`; // Últimos 4 dígitos
+                    formattedValue += `-${value.substring(7, 11)}`; 
                 }
             }
         }
         event.target.value = formattedValue;
-    } else if (event.target.id === 'zip') { // Validação e formatação para CEP
-        let value = event.target.value.replace(/\D/g, ''); // Remove tudo que não é dígito
+    } else if (event.target.id === 'zip') { 
+        let value = event.target.value.replace(/\D/g, ''); 
         if (value.length > 5) {
-            value = value.substring(0,5) + '-' + value.substring(5,8); // Formata para XXXXX-XXX
+            value = value.substring(0,5) + '-' + value.substring(5,8); 
         }
         event.target.value = value;
     }
